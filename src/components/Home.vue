@@ -1,11 +1,12 @@
 <template>
     <div class="home">
         <h1>{{ msg }}</h1>
+        <router-link :to="{ path: 'book/add', params: { id: 'add' }}">Add New Book</router-link>
         <b-table striped hover :items="dataContext" :fields="fields" responsive="sm"
         id="my-table"
         :per-page="perPage"
       :current-page="currentPage"
-      no-provider-paging ="true">
+      :no-provider-paging =true>
             <template v-slot:cell(thumbnailUrl)="data">
                 <b-img :src="data.value" thumbnail fluid></b-img>
             </template>
@@ -24,7 +25,7 @@
 </template>
 
 <script>
-    import axios from 'axios';
+    //import axios from 'axios';
 
     export default {
         name: 'Home',
@@ -49,10 +50,46 @@
     },
         methods: {
             dataContext(ctx, callback) {
-                axios.get("https://localhost:5001/books")
-                    .then(response => {
-                        callback(response.data);
-                });
+                //axios.get("https://localhost:5001/books")
+                //    .then(response => {
+                 //       callback(response.data);
+                //});
+                callback([{
+  "isbn": "80-346-2518",
+  "thumbnailUrl": "http://dummyimage.com/100x100.png/dddddd/000000",
+  "title_link": "",
+  "bookId": 1,
+  "descr": "Overhold",
+  "title": "Skyba"
+}, {
+  "isbn": "30-824-2800",
+  "thumbnailUrl": "http://dummyimage.com/100x100.png/dddddd/000000",
+  "title_link": "",
+  "bookId": 2,
+  "descr": "Cardify",
+  "title": "Skivee"
+}, {
+  "isbn": "71-957-8668",
+  "thumbnailUrl": "http://dummyimage.com/100x100.png/ff4444/ffffff",
+  "title_link": "",
+  "bookId": 3,
+  "descr": "Home Ing",
+  "title": "Photolist"
+}, {
+  "isbn": "03-477-8585",
+  "thumbnailUrl": "http://dummyimage.com/100x100.png/dddddd/000000",
+  "title_link": "",
+  "bookId": 4,
+  "descr": "Home Ing",
+  "title": "Browsedrive"
+}, {
+  "isbn": "72-304-6859",
+  "thumbnailUrl": "http://dummyimage.com/100x100.png/cc0000/ffffff",
+  "title_link": "",
+  "bookId": 5,
+  "descr": "Daltfresh",
+  "title": "Twitterlist"
+}]);
             }
         }
     };

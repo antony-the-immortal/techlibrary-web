@@ -12,6 +12,21 @@ const router = new VueRouter({
     {
       name: 'book_view',
       path: '/book/:id',
+      params: { mode: 'view' },
+      component: Book,
+      props: true
+    },
+    {
+      name: 'book_edit',
+      path: '/book/:id',
+      params: { mode: 'edit' },
+      component: Book,
+      props: true
+    },
+    {
+      name: 'book_add',
+      path: '/book/add',
+      params: { mode: 'add' },
       component: Book,
       props: true
     }
